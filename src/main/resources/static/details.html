@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netz Details - NGO Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Spezifisches Styling für die Detailansicht */
+        body {
+            margin: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('Geisternetze.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: sans-serif;
+        }
+        .header-dark {
+            background: #002b36;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #2ecc71;
+        }
+        .header-dark img { height: 50px; }
+        
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; }
+        
+        /* Karten-Layout für die Informationsblöcke */
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-left: 10px solid #0077be;
+        }
+
+        .action-card {
+            background: #fdfdfd;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: none; /* Wird via JS eingeblendet */
+        }
+
+        .data-row { margin-bottom: 15px; font-size: 1.1em; }
+        .data-label { font-weight: bold; color: #555; width: 180px; display: inline-block; }
+        
+        input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin-right: 5px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; color: white; background: #0077be; font-weight: bold; }
+        button:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+<header class="header-dark">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="Copilot_20260126_202152.png" alt="Logo">
+        <h1 style="margin:0;">Geisternetz Details</h1>
+    </div>
+    <nav><a href="index.html" style="color: #2ecc71; text-decoration: none; font-weight: bold;">← Zurück</a></nav>
+</header>
+
+<div class="container">
+    <div class="info-card">
+        <h2><span id="netIdTitle">Netz</span></h2>
+        <hr>
+        <div id="detailsContent">
+            <div class="data-row"><span class="data-label">Status:</span> <span id="viewStatus">Lädt...</span></div>
+            <div class="data-row"><span class="data-label">Koordinaten:</span> <span id="viewCoords">-</span></div>
+            <div class="data-row"><span class="data-label">Größe:</span> <span id="viewSize">-</span></div>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 8px;">
+                <h4>Melder-Informationen</h4>
+                <div class="data-row"><span class="data-label">Name:</span> <span id="viewReporterName">-</span></div>
+                <div class="data-row"><span class="data-label">Kontakt:</span> <span id="viewReporterPhone">-</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="actionsArea" class="action-card">
+        <h3>Verfügbare Aktionen</h3>
+        
+        <div id="claimSection" style="display: none;">
+            <p>Möchtest du dieses Netz bergen?</p>
+            <input id="resName" placeholder="Dein Name">
+            <input id="resPhone" type="tel" pattern="^\+?[0-9]{7,15}$" placeholder="Telefon (+49...)">
+            <button onclick="handleClaim()">Netz reservieren</button>
+        </div>
+
+        <div id="recoverSection" style="display: none;">
+    <p>Bergung erfolgreich abgeschlossen?</p>
+    <p style="margin: 0; color: #666;"><small>Hinweis: Nutze Test-ID <b>1</b> (Team Ocean Care)</small></p>
+    <input id="resId" type="number" placeholder="Deine Rescuer-ID">
+    <button onclick="handleRecover()" style="background: #2ecc71;">Als GEBORGEN markieren</button>
+		</div>
+
+        <div id="lostSection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <p><small>Netz nicht gefunden? Als verschollen markieren:</small></p>
+            <input id="lostName" placeholder="Dein Name">
+            <button onclick="handleLost()" style="background: #e74c3c;">Verschollen melden</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof loadNetDetails === 'function') {
+            loadNetDetails();
+        }
+    });
+</script>
+</body>
+</html>

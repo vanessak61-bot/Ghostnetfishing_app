@@ -1,0 +1,104 @@
+/**
+ * GHOSTNET STYLESHEET
+ * CSS-Variablen für ein konsistentes Farbschema
+ */
+
+:root {
+    --deep-blue: #002b36;      /* Hintergrund Header & Logo */
+    --wave-cyan: #2aa198;      /* Hauptakzentfarbe (Maritim) */
+    --sand: #fdf6e3;           /* Helle Kontrastfarbe */
+    --coral: #d33682;          /* Warnfarbe / Akzente */
+    --success-green: #859900;  /* Erfolgsmeldungen / Geborgen-Status */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Dynamisches Hintergrundbild mit leichtem Overlay für bessere Text-Lesbarkeit */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                      url('Geisternetze.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background: var(--deep-blue);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo-area img { height: 50px; }
+
+.container { 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 0 20px; 
+}
+
+/* Karten-Container: Fokuspunkt der Anwendung */
+#map { 
+    height: 450px; 
+    border-radius: 12px; 
+    border: 3px solid var(--wave-cyan);
+    margin-bottom: 20px;
+}
+
+/* Interaktive Elemente (Filter & Formulare) */
+.filter-bar {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+select, input, button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+button {
+    background: var(--wave-cyan);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s ease;
+}
+
+button:hover { 
+    opacity: 0.9;
+    transform: translateY(-1px); /* Subtiler Hover-Effekt */
+}
+
+/* Karten-Design für die Listenansicht der Netze */
+.net-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 5px solid var(--wave-cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.net-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Dynamische Statusfarben für die linke Kartenkante */
+.status-REPORTED { border-left-color: #cb4b16; }       /* Orange: Neu gemeldet */
+.status-IN_PREPARATION { border-left-color: #b58900; } /* Gelb: In Planung */
+.status-RECOVERED { border-left-color: var(--success-green); } /* Grün: Erledigt */

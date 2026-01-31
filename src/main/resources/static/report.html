@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netz melden - NGO Geisternetz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Spezifisches Styling für das Meldeformular (Zentrierung und Glas-Effekt) */
+        body { 
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                              url('Geisternetze.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        /* Branding: Dunkler Header analog zum Dashboard */
+        .form-header {
+            background: #002b36; 
+            padding: 25px;
+            text-align: center;
+            border-bottom: 5px solid #2ecc71; 
+        }
+
+        .form-header img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.2));
+        }
+
+        .form-header h2 {
+            color: white;
+            margin: 15px 0 0 0;
+            font-size: 1.4em;
+        }
+
+        .form-content { padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover { background: #27ae60; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #0077be; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <div class="form-header">
+            <img src="Copilot_20260126_202152.png" alt="Logo">
+            <h2>📍 Neues Netz melden</h2>
+        </div>
+
+        <div class="form-content">
+            <form id="reportForm">
+                <div class="form-group">
+                    <label>Breitengrad (Latitude)</label>
+                    <input type="number" step="any" name="latitude" placeholder="z.B. 55.216" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Längengrad (Longitude)</label>
+                    <input type="number" step="any" name="longitude" placeholder="z.B. 3.409" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Geschätzte Größe</label>
+                    <select name="sizeEstimate">
+                        <option value="small">Klein (bis 5m)</option>
+                        <option value="medium">Mittel (5m - 20m)</option>
+                        <option value="large">Groß (über 20m)</option>
+                    </select>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
+
+                <div class="form-group">
+                    <label>Dein Name (optional)</label>
+                    <input type="text" name="reporterName" placeholder="Max Mustermann">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefonnummer (optional)</label>
+                    <input type="tel" 
+                           name="reporterPhone" 
+                           placeholder="+4917612345678"
+                           pattern="^\+?[0-9]{7,15}$" 
+                           title="Bitte geben Sie eine gültige Telefonnummer ein.">
+                </div>
+
+                <button type="submit" class="btn-submit">Abschicken</button>
+            </form>
+            
+            <div id="result"></div>
+            <a href="index.html" class="back-link">← Zurück zum Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

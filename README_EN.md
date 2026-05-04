@@ -1,5 +1,5 @@
 # NGO Ghost Net Management System (Prototyp)
-
+This project is licensed under the MIT License
 A management tool to track and recover ghost nets, featuring automated coordinate conversion
 
 ## Technologiestack

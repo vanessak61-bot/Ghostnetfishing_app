@@ -1,5 +1,6 @@
 # NGO Geisternetz-Management System (Prototyp)
 (english version below: https://github.com/vanessak61-bot/Ghostnetfishing_app/blob/main/README_EN.md)
+Dieses Projekt steht unter MIT-Lizenz
 Dieser Prototyp dient der Erfassung und Nachverfolgung von Geisternetzen. Die Anwendung ermöglicht es NGOs und Bergungsteams, den Status von Netzen von der Meldung bis zur Bergung zu verwalten.
 
 ## Technologiestack
